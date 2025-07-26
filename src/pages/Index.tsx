@@ -1,51 +1,12 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
-import BookingForm from "@/components/BookingForm";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ApartmentCard, { ApartmentProps } from "@/components/ApartmentCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Wifi, Utensils, Waves, LifeBuoy, MapPin, Coffee } from "lucide-react";
+import { ArrowRight, Search, Tag, Map, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-// Sample apartments data
-const featuredApartments: ApartmentProps[] = [
-  {
-    id: "1",
-    name: "Deluxe Sea View Suite",
-    description: "Luxurious suite with panoramic sea views, modern amenities, and a private balcony.",
-    price: 180,
-    capacity: 2,
-    size: 45,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Balcony"]
-  },
-  {
-    id: "2",
-    name: "Premium Family Apartment",
-    description: "Spacious apartment ideal for families, with full kitchen and stunning coastal views.",
-    price: 250,
-    capacity: 4,
-    size: 75,
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
-    location: "Second row",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Washing Machine"]
-  },
-  {
-    id: "3",
-    name: "Executive Beach Studio",
-    description: "Elegant studio with direct beach access, modern design, and premium finishes.",
-    price: 150,
-    capacity: 2,
-    size: 35,
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchenette", "Bathroom", "Air Conditioning", "TV"]
-  }
-];
+import { mockLists } from "@/data/mockData";
+import ListCard from "@/components/ListCard";
 
 export default function Index() {
   const { t } = useLanguage();
@@ -55,39 +16,32 @@ export default function Index() {
     window.scrollTo(0, 0);
   }, []);
   
-  // Feature items
+  // Feature items for Shoof
   const features = [
     {
-      icon: <Waves className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.beachfront.title,
-      description: t.home.amenities.features.beachfront.description
+      icon: <Tag className="h-8 w-8 text-shoof-secondary" />,
+      title: "Identity & Values",
+      description: "Find and support businesses based on identity, values, and cultural significance."
     },
     {
-      icon: <LifeBuoy className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.pools.title,
-      description: t.home.amenities.features.pools.description
+      icon: <Map className="h-8 w-8 text-shoof-secondary" />,
+      title: "Curated Lists",
+      description: "Browse user-created collections of businesses, brands, and places with personal insights."
     },
     {
-      icon: <Utensils className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.restaurant.title,
-      description: t.home.amenities.features.restaurant.description
+      icon: <Search className="h-8 w-8 text-shoof-secondary" />,
+      title: "Discover",
+      description: "Find new places and businesses that align with your values and interests."
     },
     {
-      icon: <Wifi className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.wifi.title,
-      description: t.home.amenities.features.wifi.description
-    },
-    {
-      icon: <Coffee className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.bar.title,
-      description: t.home.amenities.features.bar.description
-    },
-    {
-      icon: <MapPin className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.location.title,
-      description: t.home.amenities.features.location.description
+      icon: <Users className="h-8 w-8 text-shoof-secondary" />,
+      title: "Community",
+      description: "Connect with others who share your interests and values."
     }
   ];
+
+  // Featured lists - just using the first 3 from our mock data
+  const featuredLists = mockLists.slice(0, 3);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -95,158 +49,90 @@ export default function Index() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <HeroSection />
-        
-        {/* Welcome Section */}
-        <section id="welcome" className="section">
+        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-20">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in [animation-delay:100ms]">
-                <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  {t.home.welcome.subtitle}
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  {t.home.welcome.title}
-                </h2>
-                <p className="text-muted-foreground mb-6">
-                  {t.home.welcome.description1}
-                </p>
-                <p className="text-muted-foreground mb-8">
-                  {t.home.welcome.description2}
-                </p>
-                <Button asChild className="btn-primary">
-                  <Link to="/about">
-                    {t.home.welcome.learnMore} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-              
-              <div className="relative animate-fade-in [animation-delay:300ms]">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop"
-                    alt="Seaside view" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -left-6 w-2/3 rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=400&h=300&fit=crop"
-                    alt="Luxury apartment interior" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -top-6 -right-6 w-1/2 rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=300&fit=crop"
-                    alt="Pool view" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Booking Form Section */}
-        <section className="relative py-20 bg-gradient-to-r from-sea-light to-white dark:from-sea-dark dark:to-background overflow-hidden">
-          <div className="container relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
-                <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  {t.home.booking.subtitle}
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  {t.home.booking.title}
-                </h2>
-                <p className="text-muted-foreground mb-6">
-                  {t.home.booking.description}
+                <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                  Discover places that matter
+                </h1>
+                <p className="text-xl mb-8 opacity-90">
+                  Shoof lets you create and browse curated lists of businesses, brands, and places 
+                  tagged by identity, values, and culture.
                 </p>
-                <ul className="space-y-3 mb-8">
-                  {t.home.booking.benefits.map((item, index) => (
-                    <li key={index} className="flex items-center">
-                      <div className="h-5 w-5 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-3">
-                        <ArrowRight className="h-3 w-3" />
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="bg-white text-shoof-primary hover:bg-white/90">
+                    <Link to="/explore">
+                      Start Exploring <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                    <Link to="/create-list">
+                      Create a List
+                    </Link>
+                  </Button>
+                </div>
               </div>
               
-              <BookingForm />
-            </div>
-          </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-            <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-primary/50 blur-3xl" />
-            <div className="absolute bottom-10 right-40 w-48 h-48 rounded-full bg-sea-light blur-3xl" />
-          </div>
-        </section>
-        
-        {/* Featured Apartments */}
-        <section className="section">
-          <div className="container">
-            <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-              <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                {t.home.featuredApartments.subtitle}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-                {t.home.featuredApartments.title}
-              </h2>
-              <p className="text-muted-foreground">
-                {t.home.featuredApartments.description}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredApartments.map((apartment, index) => (
-                <div key={apartment.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
-                  <ApartmentCard apartment={apartment} />
+              <div className="relative animate-fade-in hidden lg:block">
+                <div className="aspect-square relative">
+                  {/* Main image */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl rotate-3 z-10">
+                    <img 
+                      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=800&fit=crop"
+                      alt="Restaurant scene" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Overlapping images */}
+                  <div className="absolute -bottom-8 -left-8 w-2/3 rounded-2xl overflow-hidden shadow-xl -rotate-6 z-0">
+                    <img 
+                      src="https://images.unsplash.com/photo-1521056787327-246ed5f5fcfe?w=600&h=400&fit=crop"
+                      alt="Bookstore" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -top-8 -right-8 w-1/2 rounded-2xl overflow-hidden shadow-xl rotate-12 z-20">
+                    <img 
+                      src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop"
+                      alt="Café" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-              ))}
-            </div>
-            
-            <div className="text-center mt-12">
-              <Button asChild className="btn-primary">
-                <Link to="/apartments">
-                  {t.home.featuredApartments.viewAll} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              </div>
             </div>
           </div>
         </section>
         
-        {/* Testimonials Section */}
-        <TestimonialsSection />
-        
-        {/* Features Section */}
-        <section className="section bg-card">
+        {/* How It Works Section */}
+        <section className="section bg-shoof-light dark:bg-shoof-dark/10">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-              <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                {t.home.amenities.subtitle}
+              <span className="text-sm text-shoof-secondary font-medium uppercase tracking-wider">
+                How It Works
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-                {t.home.amenities.title}
+              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-shoof-primary">
+                Connect with places that align with your values
               </h2>
               <p className="text-muted-foreground">
-                {t.home.amenities.description}
+                Shoof makes it easy to find and support businesses and places that match your 
+                values, identity preferences, and cultural interests.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="glass-card p-6 rounded-xl animate-fade-in flex flex-col items-center text-center"
+                  className="bg-white dark:bg-shoof-dark/20 p-6 rounded-xl animate-fade-in flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300"
                   style={{ animationDelay: `${(index + 1) * 100}ms` }}
                 >
-                  <div className="mb-4 p-3 rounded-full bg-primary/10">
+                  <div className="mb-4 p-3 rounded-full bg-shoof-light dark:bg-shoof-dark/40">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-shoof-primary">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </div>
               ))}
@@ -254,39 +140,54 @@ export default function Index() {
           </div>
         </section>
         
-        {/* CTA Section */}
-        <section className="relative py-24 bg-primary/5">
+        {/* Featured Lists Section */}
+        <section className="section">
           <div className="container">
-            <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t.home.cta.title}
+            <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
+              <span className="text-sm text-shoof-secondary font-medium uppercase tracking-wider">
+                Featured Lists
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-shoof-primary">
+                Popular Collections
               </h2>
-              <p className="text-muted-foreground mb-8">
-                {t.home.cta.description}
+              <p className="text-muted-foreground">
+                Explore these curated lists of places created by our community members.
               </p>
-              <Button asChild size="lg" className="btn-primary">
-                <Link to="/booking">{t.home.cta.bookNow}</Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredLists.map((list, index) => (
+                <div key={list.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
+                  <ListCard list={list} />
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button asChild size="lg" className="bg-shoof-primary hover:bg-shoof-primary/90">
+                <Link to="/lists">
+                  View All Lists <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </div>
           </div>
-          
-          {/* Decorative waves */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden">
-            <svg 
-              className="absolute bottom-0 w-full h-24 fill-background"
-              preserveAspectRatio="none"
-              viewBox="0 0 1440 74"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d="M0,37.1L40,34.5C80,32,160,27,240,29.6C320,32,400,42,480,42.9C560,44,640,35,720,32.1C800,30,880,34,960,40.8C1040,47,1120,56,1200,56.6C1280,57,1360,48,1400,43.3L1440,39.1L1440,74L1400,74C1360,74,1280,74,1200,74C1120,74,1040,74,960,74C880,74,800,74,720,74C640,74,560,74,480,74C400,74,320,74,240,74C160,74,80,74,40,74L0,74Z"
-                className="animate-wave opacity-50"
-              />
-              <path 
-                d="M0,37.1L40,34.5C80,32,160,27,240,29.6C320,32,400,42,480,42.9C560,44,640,35,720,32.1C800,30,880,34,960,40.8C1040,47,1120,56,1200,56.6C1280,57,1360,48,1400,43.3L1440,39.1L1440,74L1400,74C1360,74,1280,74,1200,74C1120,74,1040,74,960,74C880,74,800,74,720,74C640,74,560,74,480,74C400,74,320,74,240,74C160,74,80,74,40,74L0,74Z"
-                className="animate-wave opacity-100 [animation-delay:-4s]"
-              />
-            </svg>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="relative py-24 bg-gradient-to-r from-shoof-secondary to-shoof-primary/90 text-white">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Share your own curated lists
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                Create lists of your favorite places and businesses to share with the community.
+                Help others discover hidden gems and support values-aligned businesses.
+              </p>
+              <Button asChild size="lg" className="bg-white text-shoof-primary hover:bg-white/90">
+                <Link to="/create-list">Create Your First List</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

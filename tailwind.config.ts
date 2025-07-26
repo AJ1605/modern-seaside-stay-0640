@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,6 +61,13 @@ export default {
 					light: '#F5F5DC',
 					DEFAULT: '#E6D2B5',
 					dark: '#D2B48C'
+				},
+				shoof: {
+					primary: '#2D5F5D',    // Deep teal - primary brand color
+					secondary: '#EA8C55',  // Orange - accent color 
+					tertiary: '#74B49B',   // Mint - supporting color
+					light: '#F4F9F4',      // Off-white - light backgrounds
+					dark: '#1A2E35'        // Dark teal - dark text/backgrounds
 				}
 			},
 			borderRadius: {
