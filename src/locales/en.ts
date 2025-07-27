@@ -5,7 +5,11 @@ export const en = {
     amenities: "Amenities",
     gallery: "Gallery",
     contact: "Contact",
-    bookNow: "Book Now"
+    bookNow: "Book Now",
+    explore: "Explore",
+    lists: "Lists",
+    createList: "Create List",
+    profile: "Profile"
   },
   hero: {
     subtitle: "BEACHFRONT LUXURY ACCOMMODATION",

@@ -72,14 +72,14 @@ export default function Lists() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-14">
+        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-14 pt-28">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Discover Curated Lists
               </h1>
               <p className="text-xl opacity-90 mb-8">
-                Browse collections of places and businesses that match your values and interests.
+                Your Cultural Compass: Where Identity Meets Discovery
               </p>
               
               {/* Search */}

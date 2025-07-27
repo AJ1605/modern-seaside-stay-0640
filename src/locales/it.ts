@@ -5,7 +5,11 @@ export const it = {
     amenities: "Servizi",
     gallery: "Galleria",
     contact: "Contatti",
-    bookNow: "Prenota Ora"
+    bookNow: "Prenota Ora",
+    explore: "Esplora",
+    lists: "Liste",
+    createList: "Crea Lista",
+    profile: "Profilo"
   },
   hero: {
     subtitle: "ALLOGGI DI LUSSO SUL MARE",

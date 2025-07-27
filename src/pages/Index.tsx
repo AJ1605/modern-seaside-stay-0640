@@ -49,12 +49,12 @@ export default function Index() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-20">
+        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-20 pt-32">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
                 <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                  Discover places that matter
+                Your Cultural Compass: Where Identity Meets Discovery
                 </h1>
                 <p className="text-xl mb-8 opacity-90">
                   Shoof lets you create and browse curated lists of businesses, brands, and places 
@@ -75,30 +75,41 @@ export default function Index() {
               </div>
               
               <div className="relative animate-fade-in hidden lg:block">
-                <div className="aspect-square relative">
-                  {/* Main image */}
-                  <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl rotate-3 z-10">
-                    <img 
-                      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=800&fit=crop"
-                      alt="Restaurant scene" 
-                      className="w-full h-full object-cover"
-                    />
+                {/* Moroccan themed design container */}
+                <div className="relative w-full max-w-lg mx-auto">
+                  {/* Main image - traditional Moroccan zellige pattern */}
+                  <div className="bg-teal-600 p-1.5 rounded-3xl shadow-xl relative overflow-hidden">
+                    {/* Main zellige pattern */}
+                    <div className="overflow-hidden rounded-2xl">
+                      <img 
+                        src="https://images.unsplash.com/photo-1560840067-ddcaeb7831d3?w=800&h=600&fit=crop"
+                        alt="Moroccan zellige pattern" 
+                        className="w-full object-cover h-[300px]"
+                      />
+                    </div>
+                    
+                    {/* Decorative border pattern */}
+                    <div className="absolute inset-0 border-[8px] border-teal-500/30 rounded-2xl pointer-events-none"></div>
                   </div>
                   
-                  {/* Overlapping images */}
-                  <div className="absolute -bottom-8 -left-8 w-2/3 rounded-2xl overflow-hidden shadow-xl -rotate-6 z-0">
-                    <img 
-                      src="https://images.unsplash.com/photo-1521056787327-246ed5f5fcfe?w=600&h=400&fit=crop"
-                      alt="Bookstore" 
-                      className="w-full h-full object-cover"
-                    />
+                  {/* Overlapping compass/mirror element */}
+                  <div className="absolute -top-8 -right-8">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg transform rotate-12 border-4 border-teal-200">
+                      <div className="overflow-hidden rounded-full">
+                        <img 
+                          src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=400&h=400&fit=crop"
+                          alt="Moroccan compass design" 
+                          className="w-32 h-32 object-cover"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute -top-8 -right-8 w-1/2 rounded-2xl overflow-hidden shadow-xl rotate-12 z-20">
-                    <img 
-                      src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop"
-                      alt="Café" 
-                      className="w-full h-full object-cover"
-                    />
+                  
+                  {/* "Shoof" stylized text */}
+                  <div className="absolute -bottom-5 left-8">
+                    <div className="bg-white rounded-full py-1.5 px-8 shadow-md transform -rotate-1">
+                      <span className="text-lg font-medium text-teal-700">Your Cultural Compass</span>
+                    </div>
                   </div>
                 </div>
               </div>

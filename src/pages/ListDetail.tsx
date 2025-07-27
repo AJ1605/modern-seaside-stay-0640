@@ -95,7 +95,7 @@ export default function ListDetail() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative">
+        <section className="relative pt-16">
           {/* Cover Image */}
           <div className="h-64 md:h-80 lg:h-96 relative">
             <img 

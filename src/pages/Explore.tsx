@@ -48,7 +48,7 @@ export default function Explore() {
       
       <main className="flex-1 bg-shoof-light dark:bg-shoof-dark/10">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-12">
+        <section className="bg-gradient-to-r from-shoof-primary to-shoof-tertiary text-white py-12 pt-28">
           <div className="container">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Explore Curated Lists</h1>
             <p className="text-xl mb-8 max-w-3xl">
