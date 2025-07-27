@@ -53,63 +53,157 @@ export default function Index() {
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Your Cultural Compass: Where Identity Meets Discovery
-                </h1>
-                <p className="text-xl mb-8 opacity-90">
-                  Shoof lets you create and browse curated lists of businesses, brands, and places 
-                  tagged by identity, values, and culture.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" className="bg-white text-shoof-primary hover:bg-white/90">
-                    <Link to="/explore">
-                      Start Exploring <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                    <Link to="/create-list">
-                      Create a List
-                    </Link>
-                  </Button>
+                <div className="relative">
+                  <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-white/10 blur-2xl"></div>
+                  <div className="absolute top-20 -right-5 w-24 h-24 rounded-full bg-teal-400/20 blur-xl"></div>
+                  
+                  <span className="inline-block text-teal-200 font-medium tracking-wider mb-2">DISCOVER • EXPLORE • CONNECT</span>
+                  
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight relative">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-teal-100">Your Cultural Compass</span>
+                    {/* <div className="flex items-center">
+                      <div className="h-0.5 w-16 bg-teal-300 mr-3"></div>
+                      <span className="italic">Where Identity Meets Discovery</span>
+                    </div> */}
+                  </h1>
+                  
+                  <p className="text-xl mb-8 opacity-90 relative">
+                    Shoof lets you create and browse curated lists of businesses, brands, and places 
+                    tagged by identity, values, and culture.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 relative z-10">
+                    <Button asChild size="lg" className="bg-white text-shoof-primary hover:bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      <Link to="/explore">
+                        Start Exploring <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                      <Link to="/create-list">
+                        Create a List
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
               
               <div className="relative animate-fade-in hidden lg:block">
-                {/* Moroccan themed design container */}
-                <div className="relative w-full max-w-lg mx-auto">
-                  {/* Main image - traditional Moroccan zellige pattern */}
-                  <div className="bg-teal-600 p-1.5 rounded-3xl shadow-xl relative overflow-hidden">
-                    {/* Main zellige pattern */}
-                    <div className="overflow-hidden rounded-2xl">
-                      <img 
-                        src="https://images.unsplash.com/photo-1560840067-ddcaeb7831d3?w=800&h=600&fit=crop"
-                        alt="Moroccan zellige pattern" 
-                        className="w-full object-cover h-[300px]"
-                      />
-                    </div>
-                    
-                    {/* Decorative border pattern */}
-                    <div className="absolute inset-0 border-[8px] border-teal-500/30 rounded-2xl pointer-events-none"></div>
-                  </div>
-                  
-                  {/* Overlapping compass/mirror element */}
-                  <div className="absolute -top-8 -right-8">
-                    <div className="bg-white p-1.5 rounded-full shadow-lg transform rotate-12 border-4 border-teal-200">
-                      <div className="overflow-hidden rounded-full">
+                {/* Multi-circle image collage */}
+                <div className="relative w-full max-w-md mx-auto h-[550px]">
+                  {/* Main large circle */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="bg-teal-600 p-2 rounded-full shadow-xl overflow-hidden">
+                      <div className="w-72 h-72 overflow-hidden rounded-full">
                         <img 
-                          src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=400&h=400&fit=crop"
-                          alt="Moroccan compass design" 
-                          className="w-32 h-32 object-cover"
+                          src="/images/jamie-street-PE3JGtPVTY8-unsplash.jpg"
+                          alt="Compass navigation" 
+                          className="w-full h-full object-cover"
                         />
                       </div>
                     </div>
                   </div>
                   
-                  {/* "Shoof" stylized text */}
-                  <div className="absolute -bottom-5 left-8">
-                    <div className="bg-white rounded-full py-1.5 px-8 shadow-md transform -rotate-1">
-                      <span className="text-lg font-medium text-teal-700">Your Cultural Compass</span>
+                  {/* Top right - Beach view */}
+                  <div className="absolute top-4 right-4 z-20">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg border-4 border-teal-200 transform rotate-3">
+                      <div className="w-40 h-40 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/ruben-ramirez-xhKG01FN2uk-unsplash.jpg"
+                          alt="Beach view" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     </div>
+                  </div>
+                  
+                  {/* Top left - Local architecture */}
+                  <div className="absolute top-20 left-4 z-20">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg border-4 border-teal-200 transform ">
+                      <div className="w-36 h-36 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/trnava-university-BEEyeib-am8-unsplash.jpg"
+                          alt="Local architecture" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom left - Local cuisine */}
+                  <div className="absolute bottom-16 left-10 z-20">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg border-4 border-teal-200 transform rotate-12">
+                      <div className="w-36 h-36 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/dan-gold-E6HjQaB7UEA-unsplash.jpg"
+                          alt="Local cuisine" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom right - Activities */}
+                  <div className="absolute bottom-8 right-0 z-20">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg border-4 border-teal-200 transform">
+                      <div className="w-44 h-44 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/bruno-cervera-4rvc6HWITpY-unsplash.jpg"
+                          alt="Local activities" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Additional circles */}
+                  {/* Mid-right - small size */}
+                  <div className="absolute top-1/3 right-0 z-20">
+                    <div className="bg-white p-1 rounded-full shadow-lg border-4 border-teal-200 transform rotate-6">
+                      <div className="w-28 h-28 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/conor-brown-sqkXyyj4WdE-unsplash.jpg"
+                          alt="Sunset view" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Mid-left - medium size */}
+                  <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-20">
+                    <div className="bg-white p-1.5 rounded-full shadow-lg border-4 border-teal-200 transform -rotate-8">
+                      <div className="w-20 h-20 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/prudence-earl-8F0I12ypHPA-unsplash.jpg"
+                          alt="Thrifting" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Accent circle - made bigger and moved left */}
+                  <div className="absolute top-10 left-1/3 z-20">
+                    <div className="bg-white p-0.5 rounded-full shadow-md border-2 border-teal-200 transform rotate-12">
+                      <div className="w-20 h-20 overflow-hidden rounded-full">
+                        <img 
+                          src="/images/kitera-dent-ABBblFwicU8-unsplash.jpg"
+                          alt="Detail view" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative floating elements */}
+                  <div className="absolute top-1/3 right-1/4 z-0">
+                    <div className="w-12 h-12 rounded-full bg-teal-400/30 animate-float"></div>
+                  </div>
+                  <div className="absolute bottom-1/3 left-1/4 z-0">
+                    <div className="w-8 h-8 rounded-full bg-white/40 animate-float-slow"></div>
+                  </div>
+                  <div className="absolute bottom-1/4 right-1/3 z-0">
+                    <div className="w-6 h-6 rounded-full bg-teal-300/20 animate-float-slow"></div>
                   </div>
                 </div>
               </div>
