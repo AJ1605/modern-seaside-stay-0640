@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from 'react';
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -35,7 +36,7 @@ export default function Navbar() {
       "bg-teal-600/90 dark:bg-teal-800/90 backdrop-blur-lg py-4 shadow-md" : 
       "bg-transparent py-6"
   )}>
-      <nav className="container flex items-center">
+      <nav className="w-full mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0 flex items-center">
           <div className="flex items-center">
             <span className="font-bold text-2xl text-white mr-2">Shoof</span>
@@ -44,23 +45,25 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-10 mx-auto pl-24">
+        <ul className="hidden md:flex space-x-12 justify-between absolute left-1/2 transform -translate-x-1/2">
           {navLinks.map(link => (
-            <li key={link.name} className="relative">
+            <li key={link.name} className="relative px-2 hover:bg-white/5 rounded-lg transition-colors">
               <Link 
                 to={link.path} 
-                className="text-lg font-medium text-white/90 transition-colors hover:text-white flex items-center
-                          after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 
-                          after:w-0 after:bg-white after:transition-all hover:after:w-full"
+                className="text-xl font-bold text-white/90 hover:text-white flex items-center py-2
+                          after:absolute after:bottom-1 after:left-3 after:right-3 after:h-[3px] 
+                          after:bg-white after:scale-x-0 after:transition-transform hover:after:scale-x-100"
               >
-                {link.icon}
+                {React.cloneElement(link.icon, {
+                  className: "mr-2 h-5 w-5 flex-shrink-0"
+                })}
                 {link.name}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
           <Button asChild className="bg-white text-teal-700 hover:bg-white/90 text-base py-2 px-4">
             <Link to="/create-list" className="flex items-center">
